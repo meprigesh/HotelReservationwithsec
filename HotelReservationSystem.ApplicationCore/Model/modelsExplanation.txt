@@ -1,0 +1,2 @@
+﻿1 customer can book number of rooms at a time
+1 customer can use one room
