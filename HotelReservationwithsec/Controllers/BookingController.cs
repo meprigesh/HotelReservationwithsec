@@ -27,16 +27,11 @@ namespace Hotel_Reservation_System.Controllers
            // var standardRoom= context.Rooms.FromSqlRaw("select COUNT(Type) from Rooms where Type='standard' And Avilability='True'");
             //if(standardRoom=0)//this will check if room is avilable or not
             {
+             
                 return Ok();
             }
             return Ok();
         }
-
-
-
-
-
-
 
     }
 }

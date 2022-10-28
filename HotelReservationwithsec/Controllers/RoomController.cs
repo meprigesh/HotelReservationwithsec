@@ -10,19 +10,20 @@ namespace Hotel_Reservation_System.Controllers
     [ApiController]
     public class RoomController : Controller
     {
-        private readonly HotelReservationContext _context;
+        private readonly HotelReservationContext context;
         private readonly RoomRepository roomRepository;
         public RoomController(HotelReservationContext context,RoomRepository roomRepository)
         {
-            _context = context;
+            this.context = context;
             this.roomRepository = roomRepository;
         }
 
+        
 
         //Controller to display the list of rooms
         public async Task<IActionResult>ListRoom()
         {
-            var rooms = await _context.Rooms.ToListAsync();
+            var rooms = await roomRepository.ListAll();
             return View(rooms);
         }
 
@@ -41,7 +42,7 @@ namespace Hotel_Reservation_System.Controllers
             if(ModelState.IsValid)
             {
                 roomRepository.InsertAsync(room);
-                await _context.SaveChangesAsync();
+                await context.SaveChangesAsync();
                 return RedirectToAction("ListRoom"); 
             }
             return View(room);
@@ -52,12 +53,12 @@ namespace Hotel_Reservation_System.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Rooms==null)
+            if (id == null || context.Rooms==null)
             {
                 return NotFound();
             }
 
-            var rooms = await _context.Rooms.FindAsync(id);
+            var rooms = await context.Rooms.FindAsync(id);
             if(rooms==null)
             {
                 return NotFound();
@@ -79,7 +80,7 @@ namespace Hotel_Reservation_System.Controllers
                 try
                 {
                     roomRepository.Update(room);
-                    await _context.SaveChangesAsync();
+                    await context.SaveChangesAsync();
                 }
                 catch(DbUpdateConcurrencyException)
                 {
@@ -100,16 +101,16 @@ namespace Hotel_Reservation_System.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var room=_context.Rooms.Find(id);
+            var room= context.Rooms.Find(id);
             return View(room);
         }
 
         [HttpPost]
         public IActionResult Delete(Room room)
         {
-            room=_context.Rooms.Find(room.Id);
-            _context.Rooms.Remove(room);
-            _context.SaveChanges();
+            room= context.Rooms.Find(room.Id);
+            context.Rooms.Remove(room);
+            context.SaveChanges();
             return RedirectToAction(nameof(ListRoom));
         }
 
@@ -118,7 +119,7 @@ namespace Hotel_Reservation_System.Controllers
 
         private bool ProgramExists(int id)
         {
-            return _context.Rooms.Any(e => e.Id == id);
+            return context.Rooms.Any(e => e.Id == id);
         }
 
 

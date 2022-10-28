@@ -1,35 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using HotelReservationSystem.ApplicationCore.Model;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HotelReservationSystem.ApplicationCore.Model
+namespace Hotel_Reservation_System.ViewModel
 {
-    public class Customer
+    public class CustomerViewModel
     {
-        public int Id { get; set; }
-
         [Required]
-        [MinLength(1,ErrorMessage ="*")]
+        [MinLength(1, ErrorMessage = "*")]
         public string FirstName { get; set; }
 
         [Required]
-        [MinLength(1,ErrorMessage ="*")]
+        [MinLength(1, ErrorMessage = "*")]
         public string LastName { get; set; }
+
+        public string Name { get; set; }
 
         [Required]
         [MinLength(1, ErrorMessage = "*")]
         public string Address { get; set; }
 
 
-        [Required(ErrorMessage ="*")]
+        [Required(ErrorMessage = "*")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
 
-        [Required(ErrorMessage ="*")]
+        [Required(ErrorMessage = "*")]
         public string Gender { get; set; }
 
         [Required]
@@ -56,7 +52,5 @@ namespace HotelReservationSystem.ApplicationCore.Model
         public string? Photo { get; set; }
         public int RoomId { get; set; }
         public Room Room { get; set; }
-
-        
     }
 }

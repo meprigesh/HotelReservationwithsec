@@ -5,18 +5,15 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//  options.UseSqlServer(connectionString));
-builder.Services.AddDbContext<HotelReservationContext>();
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<HotelReservationContext>();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<HotelReservationContext>();
 builder.Services.AddScoped<RoomRepository>();
 builder.Services.AddScoped<CustomerRepository>();
-builder.Services.AddControllersWithViews();
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
 
 var app = builder.Build();
 
