@@ -10,6 +10,8 @@ namespace HotelReservationSystem.ApplicationCore.Model
 
         public int RoomId { get; set; }
 
+        //public Customer 
+
         public List<Room> Rooms { get; set; }
     }
 }

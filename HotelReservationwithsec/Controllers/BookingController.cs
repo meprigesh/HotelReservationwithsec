@@ -1,6 +1,9 @@
 ﻿using HotelReservationSystem.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace Hotel_Reservation_System.Controllers
 {
@@ -14,13 +17,25 @@ namespace Hotel_Reservation_System.Controllers
 
         public IActionResult DeluxRoomCount()
         {
-            var deluxRoom = context.Rooms.FromSqlRaw("select COUNT(type) from Rooms where Type='Delxu' And Avilability='True'");
-          //  if(deluxRoom = 0)//this will check if room is avilable or not
+            string deluxRoom = "select COUNT(type) from Rooms where Type='Delxu' And Avilability='True'";
+            int count = 0;
+
+            using (SqlConnection thisConnection = new SqlConnection("Data Source=HootelReservationDb1"))
             {
-            //    return NotFound();
+                using (SqlCommand cmdCount = new SqlCommand(deluxRoom, thisConnection))
+                {
+                    thisConnection.Open();
+                    count = (int)cmdCount.ExecuteScalar();
+                }
+                return Ok(count);
+            }
+            if(count == 0)//this will check if room is avilable or not
+            {
+               return NotFound();
             }
             return Ok(deluxRoom);
         }
+
 
         public IActionResult StandardRoomCount()
         {
