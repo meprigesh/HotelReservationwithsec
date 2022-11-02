@@ -17,10 +17,10 @@ namespace Hotel_Reservation_System.Controllers
             return View();
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public IActionResult Invoice()
         {
 
-        }
+        }*/
     }
 }

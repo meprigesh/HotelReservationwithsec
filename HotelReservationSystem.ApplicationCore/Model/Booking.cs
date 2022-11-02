@@ -1,17 +1,34 @@
 ﻿
 
+using System.ComponentModel.DataAnnotations;
+
 namespace HotelReservationSystem.ApplicationCore.Model
 {
     public class Booking
     {
+        [Key]
         public int BookingId { get; set; }
-        public DateTime StarDate { get; set; }
-        public DateTime EndDate { get; set; }
 
-        public int RoomId { get; set; }
+        [Required]
+        public DateTime ChecKIn { get; set; }
 
-        //public Customer 
+        [Required]
+        public DateTime CheckOut { get; set; }
 
-        public List<Room> Rooms { get; set; }
+        //[Required]
+        //[DataType(DataType.EmailAddress)]
+        //public string Email { get;set; }
+
+        //[Required]
+        //[DataType(DataType.PhoneNumber)]
+        //public string Contact { get; set; }
+
+        [Required]
+        public int NumberOfRooms { get; set; }
+
+        public RoomType RoomType { get; set; }
+        public int RoomTypeId { get; set; }
+
+     
     }
 }

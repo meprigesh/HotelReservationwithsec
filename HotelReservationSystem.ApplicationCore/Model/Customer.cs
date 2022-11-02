@@ -40,22 +40,22 @@ namespace HotelReservationSystem.ApplicationCore.Model
 
 
         [Required(ErrorMessage = "*")]
-        public string? RoomType { get; set; }
+        public RoomType RoomType { get; set; }
 
 
-        [Required(ErrorMessage = "*")]
-        public int NumberOfRoom { get; set; }
+        //[Required(ErrorMessage = "*")]
+        //public int NumberOfRoom { get; set; }
 
-        [Required]
-        public DateTime CheckIn { get; set; }
+        //[Required]
+        //public DateTime CheckIn { get; set; }
 
-        [Required]
-        public DateTime CheckOut { get; set; }
+        //[Required]
+        //public DateTime CheckOut { get; set; }
 
 
         public string? Photo { get; set; }
-        public int RoomId { get; set; }
-        public Room Room { get; set; }
+        //public int RoomId { get; set; }
+       // public Room Room { get; set; }
 
         
     }

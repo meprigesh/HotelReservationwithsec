@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Hotel_Reservation_System.Controllers
 {
     [Route("api/[controller]/[action]")]
+    [ApiController]
     public class CustomerController : Controller
     {
         private readonly CustomerRepository customerRepository;

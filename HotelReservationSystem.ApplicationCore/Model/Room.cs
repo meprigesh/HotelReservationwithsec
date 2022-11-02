@@ -8,11 +8,9 @@ namespace HotelReservationSystem.ApplicationCore.Model
     {
         public int Id { get; set; }
 
-        [Required]
-        public string Type { get; set; }
+        public RoomType RoomType { get; set; }//this eill give room type id
 
-        [Required]
-        public int Price { get; set; }
+       // public string TypeOfRoom { get; set; }
 
         public bool? Avilability { get; set; }=true;
 
