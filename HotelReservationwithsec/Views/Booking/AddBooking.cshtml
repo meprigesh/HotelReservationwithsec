@@ -3,7 +3,7 @@
 
 
 @{
-    var rooms = ViewData["RoomTypes"] as List<SelectListItem>;
+    var RoomTypes = ViewData["RoomTypes"] as List<SelectListItem>;
 }
 
 
@@ -30,9 +30,10 @@
                 
                 </div>
                 
-                <div class="form-group">
+                <div class="mb-2 col-md-6">
                     <label asp-for="RoomType" class="control-label"></label>
-                    <select asp-for="RoomTypeId" asp-items="rooms" class="form-control"></select>
+                    <select asp-for="RoomTypeId" asp-items="RoomTypes" class="form-control"></select>
+                    <span asp-validation-for="RoomType" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">

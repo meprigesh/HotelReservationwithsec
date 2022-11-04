@@ -2,6 +2,7 @@
 using HotelReservationSystem.Infrastructure.Data;
 //using HotelReservationSystem.Infrastructure.Migrations;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
@@ -64,10 +65,17 @@ namespace Hotel_Reservation_System.Controllers
         [HttpGet]
         public IActionResult AddBooking()
         {
+
+            ViewData["RoomTypes"] = context.RoomTypes.Select(c=>new SelectListItem
+            {
+                Text = c.TypeOfRoom,
+                Value =c.RoomTypeId.ToString()
+                
+            }).ToList();
             return View();
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task <IActionResult> AddBooking(Booking booking)
         {
             if(StandardRoomCount||DeluxRoomCount >=0)
@@ -77,7 +85,7 @@ namespace Hotel_Reservation_System.Controllers
                 return Ok();
             }
             return Ok();
-        }
+        }*/
 
     }
 }

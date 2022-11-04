@@ -11,36 +11,38 @@ namespace HotelReservationSystem.ApplicationCore.Model
     {
         public int Id { get; set; }
 
-        [Required]
+        //[Required]
         [MinLength(1,ErrorMessage ="*")]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
-        [Required]
+        //[Required]
         [MinLength(1,ErrorMessage ="*")]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
-        [Required]
+        //[Required]
         [MinLength(1, ErrorMessage = "*")]
-        public string Address { get; set; }
+        public string? Address { get; set; }
 
 
-        [Required(ErrorMessage ="*")]
+        //[Required(ErrorMessage ="*")]
         [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
 
-        [Required(ErrorMessage ="*")]
-        public string Gender { get; set; }
+        //[Required(ErrorMessage ="*")]
+        public string? Gender { get; set; }
 
-        [Required]
+        //[Required]
         [MinLength(10, ErrorMessage = "*")]
         //[Display(Name ="Number should be 10 digit")]
         [DataType(DataType.PhoneNumber)]
-        public string Contact { get; set; }
+        public string? Contact { get; set; }
 
 
-        [Required(ErrorMessage = "*")]
-        public RoomType RoomType { get; set; }
+        //[Required(ErrorMessage = "*")]
+        public RoomType? RoomType { get; set; }
+
+        public Booking? booking { get; set; }
 
 
         //[Required(ErrorMessage = "*")]

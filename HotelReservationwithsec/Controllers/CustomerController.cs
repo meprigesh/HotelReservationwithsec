@@ -24,11 +24,11 @@ namespace Hotel_Reservation_System.Controllers
         public async Task<IActionResult>AddCustomer()
         {
             var rooms = await roomRepository.ListAll();
-            ViewData["rooms"] = rooms.Select(r => new SelectListItem
+            /*ViewData["rooms"] = rooms.Select(r => new SelectListItem
             {
-                Text = r.Type,
+                Text = r.RoomType,
                 Value = r.Id.ToString(),
-            }).ToList();
+            }).ToList();*/
             return View();        
         }
 

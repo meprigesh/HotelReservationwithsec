@@ -12,7 +12,7 @@ namespace HotelReservationSystem.ApplicationCore.Model
         [Key]
         public int InvoiceNo { get; set; }
 
-        public DateTime IssueDate { get; set; }
+        public DateTime? IssueDate { get; set; }
 
         public Customer customer { get; set; }
 
