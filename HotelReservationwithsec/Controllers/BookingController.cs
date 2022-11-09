@@ -11,7 +11,7 @@ using System.Security.Cryptography;
 namespace Hotel_Reservation_System.Controllers
 {
     [Route("api/[controller]/[action]")]
-    [ApiController]
+    //[ApiController]
     public class BookingController : Controller
     {
         private readonly HotelReservationContext context;
@@ -75,17 +75,28 @@ namespace Hotel_Reservation_System.Controllers
             return View();
         }
 
-        /*[HttpPost]
+        [HttpPost]
         public async Task <IActionResult> AddBooking(Booking booking)
         {
-            if(StandardRoomCount||DeluxRoomCount >=0)
+            
             {
                 await context.Bookings.AddAsync(booking);
                 context.SaveChanges();
-                return Ok();
+                return RedirectToAction("AddBooking");
             }
-            return Ok();
+            
+        }
+
+      /*  [HttpPost]
+        public IActionResult AddBooking(Booking booking)
+        {
+
+            context.Bookings.Add(booking);
+            context.SaveChanges();
+            return View();
         }*/
+
+
 
     }
 }

@@ -27,7 +27,7 @@ namespace HotelReservationSystem.ApplicationCore.Model
         public int NumberOfRooms { get; set; }
 
         public RoomType RoomType { get; set; }
-        public int RoomTypeId { get; set; }
+        //public int RoomTypeId { get; set; }
 
      
     }
